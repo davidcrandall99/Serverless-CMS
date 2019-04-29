@@ -1,0 +1,33 @@
+{
+  "name": "serverless-cms",
+  "version": "0.0.1",
+  "description": "A completely serverless, headless CMS",
+  "main": "app.js",
+  "scripts": {
+    "test": "sls invoke local -f hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidcrandall99/Serverless-CMS.git"
+  },
+  "keywords": [
+    "Serverless",
+    "Lambda",
+    "Lambdas",
+    "CMS",
+    "Headless",
+    "CMS",
+    "AWS",
+    "AWS",
+    "Lambda"
+  ],
+  "dependencies": {
+    "serverless": "^1.39.1"
+  },
+  "author": "David Crandall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidcrandall99/Serverless-CMS/issues"
+  },
+  "homepage": "https://github.com/davidcrandall99/Serverless-CMS#readme"
+}
