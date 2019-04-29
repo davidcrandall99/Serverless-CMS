@@ -4,7 +4,8 @@
   "description": "A completely serverless, headless CMS",
   "main": "app.js",
   "scripts": {
-    "test": "sls invoke local -f hello"
+    "test": "sls invoke local -f hello",
+    "deploy-dev": "sls deploy"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "Lambda"
   ],
   "dependencies": {
+    "aws-sdk": "^2.444.0",
     "serverless": "^1.39.1"
   },
   "author": "David Crandall",
