@@ -1,0 +1,1 @@
+service: ${self:provider.stage}-${self:service}

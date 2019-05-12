@@ -5,11 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "serverless invoke local -f getPage -d {\"data\":\"hello world\"} --stage dev --region='us-east-1'",
-    "deploy-dev":   "serverless deploy --stage dev --region us-east-1",
-    "deploy":       "serverless deploy --stage dev --region us-east-1",
-    "deploy-stg":   "serverless deploy --stage stg --region us-east-1",
-    "deploy-qa":    "serverless deploy --stage qa --region us-east-1",
-    "deploy-prod":  "serverless deploy --stage prod --region us-east-1"
+    "deploy-dev": "serverless deploy --stage dev --region us-east-1",
+    "deploy": "serverless deploy --stage dev --region us-east-1",
+    "deploy-stg": "serverless deploy --stage stg --region us-east-1",
+    "deploy-qa": "serverless deploy --stage qa --region us-east-1",
+    "deploy-prod": "serverless deploy --stage prod --region us-east-1"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,10 @@
     "Lambda"
   ],
   "dependencies": {
-    "aws-sdk": "^2.444.0",
     "serverless": "^1.39.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.453.0"
   },
   "author": "David Crandall",
   "license": "MIT",

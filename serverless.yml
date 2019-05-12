@@ -30,18 +30,36 @@ environment:
 
 # you can add packaging information here
 package:
+  individually: true
   exclude:
     - resources/**
+    - node_modules/**
+    - lambdas/**
 
 # now, onto your app
 functions:
   getPage:
-    handler: app.getPage
+    package:
+      include:
+        - 'lambdas/getPage.js'
+    handler: 'lambdas/getPage.handler'
     events:
-      - http:
-          path: /
-          method: get
-      
+     - http:
+        path: getpage/
+        method: get
+     - http:
+        path: getpage/{proxy+}
+        method: get
+  writePage:
+    handler: 'lambdas/writePage.handler'
+    package:
+      include:
+        - 'lambdas/writePage.js'
+    events:  
+     - http:
+        path: /writePage/
+        method: post
+        
 
 resources:
   # DynamoDB
