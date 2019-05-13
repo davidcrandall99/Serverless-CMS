@@ -56,10 +56,8 @@ class Validator {
 	}
 
 }
-let validate = new Validator;
-
-
 module.exports.handler = (event, context, callback) => {
+	let validate = new Validator;
 	let data = event.queryStringParameters;
 
 	//resolve with data once an api connection has been made, OR reject if the connection fails
