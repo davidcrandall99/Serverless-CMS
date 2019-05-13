@@ -4,10 +4,8 @@
 TO DO:
 - function to write data
 - validate data
-	fail if not url encoded uri
 	fail if author does not exist in author db
 	fail if mr author does not exist in author db
-	fail if category_id is empty
 	fail if category_id is not in categories db, or create the category (TBD)
 	fail if any types are incorrect
 - only fire write-data function when data is validated
@@ -32,7 +30,13 @@ class Validator {
 			}
 		}
 
-	}	
+	}
+
+	types(data) {
+		return data;
+	}
+
+	//make sure the uri is a safe one	
 	uri(data) {
 		var regexp = /^[\w\-\._~:/#[\]@!\$'\(\)\*\+,;=.]+$/gm;
 		var isURL = regexp.test(data.uri);
@@ -43,11 +47,62 @@ class Validator {
 		}
 	}
 
+	authors(data) {
+		return data;
+	}
+	
+	categories(data) {
+		return data;
+	}
+
 }
 let validate = new Validator;
 
 
 module.exports.handler = (event, context, callback) => {
 	let data = event.queryStringParameters;
-	console.log(validate.uri(data));
+
+	//resolve with data once an api connection has been made, OR reject if the connection fails
+	let promise = new Promise((resolve, reject) => {
+		if(typeof(data) !== "undefined") {
+			resolve(data);
+		} else {
+			reject({"error" : "no data"});
+		}
+	});
+	
+	promise.then((data) => {
+		if(validate.types(data) === data) {
+			return data;
+		} else {
+			callback(validate.types(data));
+			return data;
+		}
+	}).then((data)=> {
+		if(validate.uri(data) === data) {
+			return data;
+		} else {
+			callback(validate.uri(data));
+			return data;
+		}
+	}).then((data)=>{
+		if(validate.authors(data) === data) {
+			return data;
+		} else {
+			callback(validate.authors(data));
+			return data;
+		}
+	}).then((data)=>{
+		if(validate.categories(data) === data) {
+			callback(null, data);
+			return data;
+		} else {
+			callback(validate.categories(data));
+			return data;
+		}
+	}).catch((data)=>{
+		callback(data);
+	});
+
+
 }
