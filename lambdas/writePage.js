@@ -15,6 +15,7 @@ TO DO:
 */
 
 
+
 class Validator {
 	//validate required fields
 	requiredFields(data) {
@@ -31,6 +32,15 @@ class Validator {
 			}
 		}
 
+	}	
+	uri(data) {
+		var regexp = /^[\w\-\._~:/#[\]@!\$'\(\)\*\+,;=.]+$/gm;
+		var isURL = regexp.test(data.uri);
+		if (isURL === false) {
+			return {"error" : "please enter a valid url"}
+		} else {
+			return data;
+		}
 	}
 
 }
@@ -39,5 +49,5 @@ let validate = new Validator;
 
 module.exports.handler = (event, context, callback) => {
 	let data = event.queryStringParameters;
-	console.log(validate.requiredFields(data));
+	console.log(validate.uri(data));
 }

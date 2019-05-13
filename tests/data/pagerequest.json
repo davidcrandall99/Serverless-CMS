@@ -5,7 +5,7 @@
 	"httpMethod": "POST",
 	"isBase64Encoded": true,
 	"queryStringParameters": {
-	  "uri": "/some-page/",
+	  "uri": "/some-page/another/page/",
     "or_author": "David",
     "mr_author": "David",
     "title": "My page title",
