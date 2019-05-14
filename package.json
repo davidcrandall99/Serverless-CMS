@@ -4,7 +4,12 @@
   "description": "A completely serverless, headless CMS",
   "main": "app.js",
   "scripts": {
-    "test": "sls invoke local -f hello"
+    "test": "serverless invoke local -f writePage -p tests/data/pagerequest.json --stage dev --region='us-east-1'",
+    "deploy-dev": "serverless deploy --stage dev --region us-east-1",
+    "deploy": "serverless deploy --stage dev --region us-east-1",
+    "deploy-stg": "serverless deploy --stage stg --region us-east-1",
+    "deploy-qa": "serverless deploy --stage qa --region us-east-1",
+    "deploy-prod": "serverless deploy --stage prod --region us-east-1"
   },
   "repository": {
     "type": "git",
@@ -23,6 +28,9 @@
   ],
   "dependencies": {
     "serverless": "^1.39.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.453.0"
   },
   "author": "David Crandall",
   "license": "MIT",

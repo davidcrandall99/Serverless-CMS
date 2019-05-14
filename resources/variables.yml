@@ -1,0 +1,4 @@
+pagesTableName: ${self:provider.stage}-${self:service}-pages
+categoriesTableName: ${self:provider.stage}-${self:service}-categories
+usersTableName: ${self:provider.stage}-${self:service}-users
+siteTableName: ${self:provider.stage}-${self:service}-site
