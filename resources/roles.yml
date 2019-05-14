@@ -1,0 +1,53 @@
+Resources:
+  readOnly:
+    Type: AWS::IAM::Role
+    Properties:
+      Path: /sls-cms/
+      RoleName: readOnly
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: readPagePolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:DescribeTable
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                Resource:
+                 - "Fn::GetAtt": [ PagesTable, Arn ]
+  writePage:
+    Type: AWS::IAM::Role
+    Properties:
+      Path: /sls-cms/
+      RoleName: writePage
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: writePagePlicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:DescribeTable
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                  - dynamodb:putItem
+                  - dynamodb:updateItem
+                Resource:
+                 - "Fn::GetAtt": [ PagesTable, Arn ]
