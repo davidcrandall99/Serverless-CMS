@@ -31,20 +31,15 @@ module.exports.handler = (event, context, callback) => {
 				TableName: process.env.DYNAMODB_TABLE
 			};
 
-			dynamodb.putItem({
-				Item: data,
-				ReturnConsumedCapacity: "TOTAL",
-				TableName: process.env.DYNAMODB_TABLE
-			}, function (err, data) {
+			dynamodb.putItem(params, function (err, data) {
 				if (err) {
-					callback(err)
+					callback(JSON.stringify(err));
 				} else {
-
 					callback(null, data);
 				}
 			});
 		} else {
-			callback(a);
+			callback(JSON.stringify(a));
 		}
 	});
 }
