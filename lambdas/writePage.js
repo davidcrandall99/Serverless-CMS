@@ -33,13 +33,13 @@ module.exports.handler = (event, context, callback) => {
 
 			dynamodb.putItem(params, function (err, data) {
 				if (err) {
-					callback(err)
+					callback(JSON.stringify(err));
 				} else {
 					callback(null, data);
 				}
 			});
 		} else {
-			callback(a);
+			callback(JSON.stringify(a));
 		}
 	});
 }
