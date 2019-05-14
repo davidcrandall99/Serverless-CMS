@@ -1,18 +1,4 @@
 'use strict';
-/*
-
-TO DO:
-- function to write data
-- validate data
-	fail if author does not exist in author db
-	fail if mr author does not exist in author db
-	fail if category_id is not in categories db, or create the category (TBD)
-	fail if any types are incorrect
-- only fire write-data function when data is validated
-
-*/
-
-
 
 class Validator {
 	//validate required fields
@@ -20,13 +6,13 @@ class Validator {
 		//these fields must e
 		const fields = ["uri", "or_author", "mr_author", "title", "category_id", "content", "template_id"];
 		var i;
-		for (i = 0; i<fields.length; i++) {
-			if(data[fields[i]]) {
-				if(i === fields.length - 1) {
+		for (i = 0; i < fields.length; i++) {
+			if (data[fields[i]]) {
+				if (i === fields.length - 1) {
 					return data;
 				}
 			} else {
-				return {"error" : `${fields[i]} is required`}
+				return { "error": `${fields[i]} is required` }
 			}
 		}
 
@@ -41,7 +27,7 @@ class Validator {
 		var regexp = /^[\w\-\._~:/#[\]@!\$'\(\)\*\+,;=.]+$/gm;
 		var isURL = regexp.test(data.uri);
 		if (isURL === false) {
-			return {"error" : "please enter a valid url"}
+			return { "error": "please enter a valid url" }
 		} else {
 			return data;
 		}
@@ -50,7 +36,7 @@ class Validator {
 	authors(data) {
 		return data;
 	}
-	
+
 	categories(data) {
 		return data;
 	}
@@ -64,36 +50,36 @@ module.exports.newPage = async (event) => {
 
 	//resolve with data once an api connection has been made, OR reject if the connection fails
 	let allData = new Promise((resolve, reject) => {
-		if(typeof(data) !== "undefined") {
-			resolve({"data present":"success"});
+		if (typeof (data) !== "undefined") {
+			resolve({ "data present": "success" });
 		} else {
-			reject({"error" : "no data"});
+			reject({ "error": "no data" });
 		}
 	});
 
 	let types = new Promise((resolve, reject) => {
-		resolve({"type check" : "success"})
+		resolve({ "type check": "success" })
 	});
 
-	let uri = new Promise((resolve,reject) => {
-		if(validate.uri(data) === data) {
-			resolve({"valid uri" : "success"})
+	let uri = new Promise((resolve, reject) => {
+		if (validate.uri(data) === data) {
+			resolve({ "valid uri": "success" })
 		} else {
-			reject({"error" : "please enter a valid URI"})
+			reject({ "error": "please enter a valid URI" })
 		}
 	});
 
 	let authors = new Promise((resolve, reject) => {
-		resolve({"authors" : "success"});
+		resolve({ "authors": "success" });
 	});
 	let categories = new Promise((resolve, reject) => {
-		resolve({"categories" : "success"});
+		resolve({ "categories": "success" });
 	});
 
-	let final = Promise.all([allData, types, uri, authors, categories]).then((data) => { return "success" }).catch((data) => {return data});
-	
+	let final = Promise.all([allData, types, uri, authors, categories]).then((data) => { return "success" }).catch((data) => { return data });
+
 	return final;
-	
+
 
 }
 
