@@ -56,7 +56,9 @@ class Validator {
 	}
 
 }
-module.exports.handler = async (event) => {
+
+//validate the creation of new pages
+module.exports.newPage = async (event) => {
 	let validate = new Validator;
 	let data = event.queryStringParameters;
 
@@ -94,3 +96,15 @@ module.exports.handler = async (event) => {
 	
 
 }
+
+
+//validate the creation of a new user
+module.exports.newUser = async (event) => {
+
+}
+
+// validate the creation of categories
+module.exports.newCategory = async (event) => {
+
+}
+
