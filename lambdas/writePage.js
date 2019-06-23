@@ -7,7 +7,7 @@ var dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 module.exports.handler = (event, context, callback) => {
 	let a = validate.newPage(event);
 	a.then((a) => {
-		if (a === "success") {
+		if (a === 'success') {
 			var d = event.queryStringParameters;
 			var data = {
 				uri: { S: d.uri },
@@ -23,11 +23,11 @@ module.exports.handler = (event, context, callback) => {
 				date_created: { S: d.date_created },
 				date_modified: { S: d.date_modified }
 
-			}
+			};
 
 			var params = {
 				Item: data,
-				ReturnConsumedCapacity: "TOTAL",
+				ReturnConsumedCapacity: 'TOTAL',
 				TableName: process.env.DYNAMODB_TABLE
 			};
 
@@ -42,4 +42,4 @@ module.exports.handler = (event, context, callback) => {
 			callback(JSON.stringify(a));
 		}
 	});
-}
+};
