@@ -1,5 +1,5 @@
 
-Copyright (c) 2018 David Crandall
+Copyright (c) 2019 David Crandall
 DEFINITIONS
 "Corporate Environment" - A business entity meeting one or more of the following criteria: 
 - 100 or more people employed or contracted
