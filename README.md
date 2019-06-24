@@ -1,4 +1,4 @@
-# Serverless-CMS
+# Serverless-CMS [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/davidgenecrandall)
 A basic "Serverless" CMS
 
 ## What is this project?
