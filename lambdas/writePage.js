@@ -7,6 +7,7 @@ var dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 module.exports.handler = (event, context, callback) => {
 	let a = validate.newPage(event);
 	a.then((a) => {
+		console.log(a);
 		if (a === 'success') {
 			var d = event.queryStringParameters;
 			var data = {

@@ -4,7 +4,9 @@
   "description": "A completely serverless, headless CMS",
   "main": "app.js",
   "scripts": {
-    "test": "serverless invoke local -f writePage -p tests/data/pagerequest.json --stage dev --region='us-east-1'",
+    "test-validate" : "serverless invoke local -f validateWrite -p tests/data/pageWriteSuccessful.json --stage dev --region='us-east-1'",
+    "test-write-success": "serverless invoke local -f writePage -p tests/data/pageWriteSuccessful.json --stage dev --region='us-east-1'",
+    "test-write-fail": "serverless invoke local -f writePage -p tests/data/pageWriteFail.json --stage dev --region='us-east-1'",
     "deploy-dev": "serverless deploy --stage dev --region us-east-1",
     "deploy": "serverless deploy --stage dev --region us-east-1",
     "deploy-stg": "serverless deploy --stage stg --region us-east-1",

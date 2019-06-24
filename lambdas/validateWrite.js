@@ -17,14 +17,14 @@ class Validator {
 		}
 
 	}
-
 	types(data) {
 		return data;
 	}
 
 	//make sure the uri is a safe one	
 	uri(data) {
-		var regexp = /^[\w\-\._~:/#[\]@!\$'\(\)\*\+,;=.]+$/gm;
+		console.log(data.uri);
+		var regexp = /^(\/).+([a-zA-Z0-9_-])(\/)?$/i;
 		var isURL = regexp.test(data.uri);
 		if (isURL === false) {
 			return { 'error': 'please enter a valid url' };
@@ -42,7 +42,7 @@ class Validator {
 	}
 
 }
-
+module.exports.validator = Validator;
 //validate the creation of new pages
 module.exports.newPage = async (event) => {
 	let validate = new Validator;
