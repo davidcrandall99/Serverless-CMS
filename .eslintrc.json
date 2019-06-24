@@ -30,8 +30,17 @@
             "error",
             "always"
         ],
+        "block-spacing": [
+            "error",
+            "always"
+        ],
         "no-console" : 0,
         "no-unused-vars": 1,
-        "no-useless-escape": 0
+        "no-useless-escape": 2,
+        "no-irregular-whitespace":2,
+        "no-trailing-spaces": 2,
+        "no-whitespace-before-property" : 2,
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }]
+        
     }
 }

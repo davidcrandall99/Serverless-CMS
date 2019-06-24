@@ -10,7 +10,7 @@ async function test(x) {
 
 let item = 'yay';
 
-test(item).then((x) => { 
+test(item).then((x) => {
 	console.log(x);
 }).catch((x) => {
 	console.log(x);

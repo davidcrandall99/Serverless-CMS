@@ -21,7 +21,7 @@ class Validator {
 		return data;
 	}
 
-	//make sure the uri is a safe one	
+	//make sure the uri is a safe one
 	uri(data) {
 		console.log(data.uri);
 		var regexp = /^(\/).+([a-zA-Z0-9_-])(\/)?$/i;
@@ -80,9 +80,7 @@ module.exports.newPage = async (event) => {
 
 	return final;
 
-
 };
-
 
 //validate the creation of a new user
 module.exports.newUser = async (event) => {
@@ -93,4 +91,3 @@ module.exports.newUser = async (event) => {
 module.exports.newCategory = async (event) => {
 
 };
-
