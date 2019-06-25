@@ -42,5 +42,6 @@ module.exports.handler = (event, context, callback) => {
 		} else {
 			callback(JSON.stringify(a));
 		}
+		return;
 	});
 };
