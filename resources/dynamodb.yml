@@ -6,13 +6,13 @@ Resources:
       AttributeDefinitions:
         - AttributeName: uri
           AttributeType: S
-        - AttributeName: date_created
-          AttributeType: S
+        # - AttributeName: date_created
+        #   AttributeType: S
       KeySchema:
         - AttributeName: uri
           KeyType: HASH
-        - AttributeName: date_created
-          KeyType: RANGE
+        # - AttributeName: date_created
+        #   KeyType: RANGE
       # Set the capacity based on the stage
       ProvisionedThroughput:
         ReadCapacityUnits: 1
@@ -24,13 +24,13 @@ Resources:
       AttributeDefinitions:
         - AttributeName: id
           AttributeType: S
-        - AttributeName: date_created
-          AttributeType: S
+        # - AttributeName: date_created
+        #   AttributeType: S
       KeySchema:
         - AttributeName: id
           KeyType: HASH
-        - AttributeName: date_created
-          KeyType: RANGE
+        # - AttributeName: date_created
+        #   KeyType: RANGE
       # Set the capacity based on the stage
       ProvisionedThroughput:
         ReadCapacityUnits: 1
@@ -42,13 +42,13 @@ Resources:
       AttributeDefinitions:
         - AttributeName: id
           AttributeType: S
-        - AttributeName: date_created
-          AttributeType: S
+        # - AttributeName: date_created
+        #   AttributeType: S
       KeySchema:
         - AttributeName: id
           KeyType: HASH
-        - AttributeName: date_created
-          KeyType: RANGE
+        # - AttributeName: date_created
+        #   KeyType: RANGE
       # Set the capacity based on the stage
       ProvisionedThroughput:
         ReadCapacityUnits: 1
@@ -61,13 +61,13 @@ Resources:
       AttributeDefinitions:
         - AttributeName: domain
           AttributeType: S
-        - AttributeName: date_created
-          AttributeType: S
+        # - AttributeName: date_created
+        #   AttributeType: S
       KeySchema:
         - AttributeName: domain
           KeyType: HASH
-        - AttributeName: date_created
-          KeyType: RANGE
+        # - AttributeName: date_created
+        #   KeyType: RANGE
       # Set the capacity based on the stage
       ProvisionedThroughput:
         ReadCapacityUnits: 1
