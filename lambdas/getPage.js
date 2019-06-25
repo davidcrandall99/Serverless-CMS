@@ -20,7 +20,7 @@ module.exports.handler = (event, context, callback) => {
 			} else {
 				var d = data.Item;
 				var content = {
-					uri: d.uri,
+					uri: d.uri.S,
 					or_author: d.or_author.S ,
 					mr_author: d.or_author.S ,
 					title: d.title.S ,
