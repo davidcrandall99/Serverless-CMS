@@ -17,6 +17,7 @@ environment:
   usersTable: ${self:custom.usersTableName}
   categoriesTable: ${self:custom.categoriesTableName}
   siteTable: ${self:custom.siteTableName}
+  userPool: ${self:custom.cognitoPoolName}
 
 # you can add packaging information here
 package:
@@ -67,3 +68,6 @@ resources:
   
   # IAM roles for functions
   - ${file(resources/roles.yml)} 
+
+  # Cognito Userpool for admins
+  - ${file(resources/cognito.yml)}
