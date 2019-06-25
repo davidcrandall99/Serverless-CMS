@@ -1,6 +1,16 @@
 # Serverless-CMS [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/davidgenecrandall)
 A basic "Serverless" CMS
 
+## Usage
+I don't have everything working yet; just starting with spinning up services and writing basic functions. 
+But, if you want to spin it all up yourself, follow the very high-level instructions.
+
+1. Install NodeJS
+2. rename the `service` in `serverless.yml` with your own service name.
+3. `cd` into the project directory and run `npm install` -- be sure to configure your AWS-SDK with your own AWS key/secret so you can deploy.
+4. run `npm run deploy` to deploy a dev environment
+
+
 ## What is this project?
 Basically, I wanted to create a framework of sorts for deploying serverless, headless CMS's in the cloud.
 
