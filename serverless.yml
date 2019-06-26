@@ -55,10 +55,23 @@ functions:
     package:
       include:
         - 'lambdas/writePage.js'
-        - 'lambdas/validateWrite.js'
+        - 'modules/validate.js'
     events:  
      - http:
         path: /writePage/
+        method: post
+  newUser:
+    role: writePage
+    handler: 'lambdas/newUser.handler'
+    environment:
+      DYNAMODB_TABLE: ${self:custom.pagesTableName}
+    package:
+      include:
+        - 'lambdas/newUser.js'
+        - 'modules/validate.js'
+    events:  
+     - http:
+        path: /newUser/
         method: post
         
 
