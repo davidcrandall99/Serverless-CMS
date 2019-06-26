@@ -1,5 +1,5 @@
 'use strict';
-const validate = require('./validateWrite');
+const validate = require('../modules/validate');
 var AWS = require('aws-sdk');
 var dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 

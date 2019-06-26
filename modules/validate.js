@@ -1,10 +1,12 @@
 'use strict';
 
+// the various processes used for validating
+// these should have unit tests
 class Validator {
 	//validate required fields
 	requiredFields(data) {
 		//these fields must e
-		const fields = ['uri', 'or_author', 'mr_author', 'title', 'category_id', 'content', 'template_id'];
+		let fields = ['uri', 'or_author', 'mr_author', 'title', 'category_id', 'content', 'template_id'];
 		var i;
 		for (i = 0; i < fields.length; i++) {
 			if (data[fields[i]]) {
@@ -15,17 +17,17 @@ class Validator {
 				return { 'error': `${fields[i]} is required` };
 			}
 		}
-
 	}
 	types(data) {
+		console.log('types are good');
 		return data;
+
 	}
 
 	//make sure the uri is a safe one
 	uri(data) {
-		console.log(data.uri);
 		var regexp = /^(\/).+([a-zA-Z0-9_-])(\/)?$/i;
-		var isURL = regexp.test(data.uri);
+		var isURL = regexp.test(data);
 		if (isURL === false) {
 			return { 'error': 'please enter a valid url' };
 		} else {
@@ -62,7 +64,7 @@ module.exports.newPage = async (event) => {
 	});
 
 	let uri = new Promise((resolve, reject) => {
-		if (validate.uri(data) === data) {
+		if (validate.uri(data.uri) === data.uri) {
 			resolve({ 'valid uri': 'success' });
 		} else {
 			reject({ 'error': 'please enter a valid URI' });

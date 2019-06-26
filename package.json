@@ -14,7 +14,7 @@
     "deploy-stg": "serverless deploy --stage stg --region us-east-1",
     "deploy-qa": "serverless deploy --stage qa --region us-east-1",
     "deploy-prod": "serverless deploy --stage prod --region us-east-1",
-    "lint": "./node_modules/.bin/eslint --fix \"lambdas/**\""
+    "lint": "./node_modules/.bin/eslint --fix 'lambdas/**' 'modules/**'"
   },
   "repository": {
     "type": "git",
