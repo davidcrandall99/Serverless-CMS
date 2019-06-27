@@ -25,7 +25,7 @@ module.exports.handler = (event, context, callback) => {
 				date_modified: { S: d.date_modified }
 
 			};
-
+			console.log(data);
 			var params = {
 				Item: data,
 				ReturnConsumedCapacity: 'TOTAL',
@@ -36,7 +36,11 @@ module.exports.handler = (event, context, callback) => {
 				if (err) {
 					callback(JSON.stringify(err));
 				} else {
-					callback(null, data);
+					var r = {
+						statusCode: 200,
+						body: JSON.stringify(data)
+					};
+					callback(null, r);
 				}
 			});
 		} else {

@@ -1,5 +1,8 @@
 service: serverless-cms # NOTE: update this with your service name
 
+# TO DO: 
+# - add api authentication for writing
+
 #provider information
 provider:
   name: aws
@@ -36,16 +39,19 @@ functions:
     package:
       include:
         - 'lambdas/getPage.js'
+        - 'modules/logger.js'
+        - 'modules/hasSlash.js'
     handler: 'lambdas/getPage.handler'
     environment:
       DYNAMODB_TABLE: ${self:custom.pagesTableName}
     events:
      - http:
-        path: getpage/
+        path: page/
         method: get
      - http:
-        path: getpage/{proxy+}
+        path: page/{proxy+}
         method: get
+  
   # the function for writing a new page
   writePage:
     role: writePage
@@ -56,22 +62,24 @@ functions:
       include:
         - 'lambdas/writePage.js'
         - 'modules/validate.js'
+        - 'modules/logger.js'
     events:  
      - http:
-        path: /writePage/
+        path: /write-page/
         method: post
-  newUser:
+  writeCategory:
     role: writePage
-    handler: 'lambdas/newUser.handler'
+    handler: 'lambdas/writeCategory.handler'
     environment:
       DYNAMODB_TABLE: ${self:custom.pagesTableName}
     package:
       include:
-        - 'lambdas/newUser.js'
+        - 'lambdas/writeCategory.js'
         - 'modules/validate.js'
+        - 'modules/logger.js'
     events:  
      - http:
-        path: /newUser/
+        path: /write-category/
         method: post
         
 
